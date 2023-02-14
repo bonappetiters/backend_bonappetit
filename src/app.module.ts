@@ -18,7 +18,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot("mongodb+srv://admin:factoriaf5@back-recette-social.c9q8fgj.mongodb.net/LaRecette"),
+    MongooseModule.forRoot("mongodb+srv://bonappetit:ODx3b6esFKfK6BIq@cluster0.5wrixjh.mongodb.net/?retryWrites=true&w=majority"),
     RecipesModule,
     UsersModule,
     AuthModule,

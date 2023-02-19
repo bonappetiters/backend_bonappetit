@@ -10,7 +10,7 @@ export class LoginController {
     constructor(private authService: AuthService){}
     @UseGuards(LocalAuthGuard)
     @Post('auth/login')
-    async login(@Req() req: Request) {
-        return this.authService.login(req.user);
+    async login(@Body() userObject: any) {
+        return this.authService.login(userObject);
     }
 }

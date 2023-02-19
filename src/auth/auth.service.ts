@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { HttpException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { User } from 'src/users/schemas/user.schema';
 import { IUser } from 'src/users/interfaces/users.interface';
 import { UsersService } from 'src/users/users.service';
@@ -27,10 +27,28 @@ export class AuthService {
         return null;
     }
 
-    async login(user: any){
-        const payload = { email: user.email, sub: user.userId };
-        return {
-            access_token: this.jwtService.sign(payload),
+    async login(userObjectLogin: any) {
+
+        const { email, password } = userObjectLogin;
+        const findUser = await this.usersService.findOneByEmail(email)
+        if (!findUser) {
+        throw new HttpException('USER_NOT_FOUND', 404);
         }
+        const checkPassword = await compare(password, findUser.password);
+
+        if (!checkPassword) {
+        throw new HttpException('PASSWORD_INVALID', 403);
+        }
+
+        const payload = {username: findUser.username, email:findUser.email};
+        const token = this.jwtService.sign(payload);
+        
+        const data = {
+        user:findUser,
+        token
+        };
+
+        return data;
+
     }
 }

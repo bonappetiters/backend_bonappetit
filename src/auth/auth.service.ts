@@ -13,19 +13,19 @@ export class AuthService {
         private encryptService: EncryptService,
     ) {};
 
-    async validateUser(email: string, password: string): Promise<IUser>{
-        const user = await this.usersService.findOneByEmail(email);
+    // async validateUser(email: string, password: string): Promise<IUser>{
+    //     const user = await this.usersService.findOneByEmail(email);
 
-        if(user){
-            const isValidPassword = await this.encryptService.compare(password, user.password);
+    //     if(user){
+    //         const isValidPassword = await this.encryptService.compare(password, user.password);
             
-            if(isValidPassword) {
-                const { password, ...result } = user;
-                return result as IUser;                
-            }
-        }
-        return null;
-    }
+    //         if(isValidPassword) {
+    //             const { password, ...result } = user;
+    //             return result as IUser;                
+    //         }
+    //     }
+    //     return null;
+    // }
 
     async login(userObjectLogin: any) {
 
@@ -39,7 +39,6 @@ export class AuthService {
         if (!checkPassword) {
         throw new HttpException('PASSWORD_INVALID', 403);
         }
-
         const payload = {username: findUser.username, email:findUser.email, id: findUser._id};
         const token = this.jwtService.sign(payload);
         

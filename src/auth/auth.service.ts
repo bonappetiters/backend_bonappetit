@@ -1,4 +1,4 @@
-import { HttpException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { User } from 'src/users/schemas/user.schema';
 import { IUser } from 'src/users/interfaces/users.interface';
 import { UsersService } from 'src/users/users.service';
@@ -13,19 +13,19 @@ export class AuthService {
         private encryptService: EncryptService,
     ) {};
 
-    // async validateUser(email: string, password: string): Promise<IUser>{
-    //     const user = await this.usersService.findOneByEmail(email);
+    async validateUser(email: string, password: string): Promise<IUser>{
+        const user = await this.usersService.findOneByEmail(email);
 
-    //     if(user){
-    //         const isValidPassword = await this.encryptService.compare(password, user.password);
+        if(user){
+            const isValidPassword = await this.encryptService.compare(password, user.password);
             
-    //         if(isValidPassword) {
-    //             const { password, ...result } = user;
-    //             return result as IUser;                
-    //         }
-    //     }
-    //     return null;
-    // }
+            if(isValidPassword) {
+                const { password, ...result } = user;
+                return result as IUser;                
+            }
+        }
+        return null;
+    }
 
     async login(userObjectLogin: any) {
 

@@ -40,7 +40,7 @@ export class AuthService {
         throw new HttpException('PASSWORD_INVALID', 403);
         }
 
-        const payload = {username: findUser.username, email:findUser.email};
+        const payload = {username: findUser.username, email:findUser.email, id: findUser._id};
         const token = this.jwtService.sign(payload);
         
         const data = {

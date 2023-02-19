@@ -7,8 +7,8 @@ export type UserDocument = User & Document;
 
 @Schema()
 export class User {
-/*   @Prop({ type: Object, unique: true })
-  _id: ObjectId; */
+  @Prop({ type: Object, unique: true })
+  _id: ObjectId;
 
   @Prop({ required: true })
   username: string;

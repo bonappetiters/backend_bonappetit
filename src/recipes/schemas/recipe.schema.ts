@@ -23,16 +23,11 @@ export class Recipe {
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "User" })
   author: ObjectId;
 
-  @Prop(raw({
-    ingredient:{type: mongoose.Schema.Types.ObjectId,ref: "Ingredient"},
-    qty:{type: Number}
-  }))
-  ingredients: [
-    {
-    ingredient:ObjectId,
-    qty: number
-  }
-  ];
+  @Prop([{ ingredient: { type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient' }, qty: { type: Number } }])
+  ingredients: Array<{ 
+    ingredient: Ingredient['_id'], 
+    qty: number }>;
+
 
   @Prop()
   time: number;

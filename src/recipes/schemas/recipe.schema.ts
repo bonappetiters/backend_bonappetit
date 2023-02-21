@@ -46,8 +46,12 @@ export class Recipe {
 
   @Prop([CommentSchema]) 
   comments: Comment[];
+
   @Prop()
   photo: string;
+
+  @Prop()
+  mealType: string;
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);

@@ -6,4 +6,5 @@ export interface Recipe {
     description: number;
     photo: string;
     tags: Array<string>
+    mealType: string;
 }

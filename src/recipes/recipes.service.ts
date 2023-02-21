@@ -33,6 +33,13 @@ export class RecipesService {
     .exec()
   }
 
+    async findOneByTitle(value: string) {
+    return this.recipeModel
+    .findOne({ title: value}, { "__v": 0, "is_private": 0})
+    .populate("ingredients author comments.user", "-_id -__v -shopping_list -email -password")
+    .exec()
+  }
+
   async findOne2(id: string) {
     return this.recipeModel.findOne({ _id: id }).exec();
   }

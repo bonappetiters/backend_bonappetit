@@ -37,6 +37,11 @@ export class RecipesController {
     return this.recipesService.findOne(id);
   }
 
+    @Get('recipe/title/:id')
+  async findOneByTitle(@Param('id') id: string) {
+    return this.recipesService.findOneByTitle(id);
+  }
+
   @UseGuards(JwtAuthGuard)
   @Patch('recipe/:id')
   async update(

@@ -32,12 +32,12 @@ export class AuthService {
         const { email, password } = userObjectLogin;
         const findUser = await this.usersService.findOneByEmail(email)
         if (!findUser) {
-        throw new HttpException('USER_NOT_FOUND', 404);
+        throw new HttpException('AUTHENTICATION_ERROR', 404);
         }
         const checkPassword = await compare(password, findUser.password);
 
         if (!checkPassword) {
-        throw new HttpException('PASSWORD_INVALID', 403);
+        throw new HttpException('AUTHENTICATION_ERROR', 404);
         }
         const payload = {username: findUser.username, email:findUser.email, id: findUser._id};
         const token = this.jwtService.sign(payload);

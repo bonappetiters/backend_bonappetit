@@ -39,4 +39,9 @@ export class CreateRecipeDto {
     example: ['vegana', 'fácil', 'desayuno'],
   })
   tags: Array<string>;
+
+    @ApiProperty({
+    example: "Breakfast",
+  })
+  mealType: string;
 }

@@ -4,7 +4,7 @@ export interface Recipe {
     recipeId: ObjectId;
     title: string;
     description: number;
-    photo: string;
+    image: string;
     tags: Array<string>
     mealType: string;
 }

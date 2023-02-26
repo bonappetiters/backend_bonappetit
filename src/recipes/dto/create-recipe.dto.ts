@@ -44,4 +44,9 @@ export class CreateRecipeDto {
     example: "Breakfast",
   })
   mealType: string;
+
+  @ApiProperty({
+    example: "https://domain.com/api/v1/1-image.png"
+  })
+  image: string;
 }

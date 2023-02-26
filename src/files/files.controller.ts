@@ -31,7 +31,8 @@ export class FilesController {
       throw new BadRequestException('Make sure file extension is valid')
     }
 
-    const secureUrl = `${process.env.HOST_API}/files/upload/${file.filename}`;
+    // const secureUrl = `${process.env.HOST_API}/files/upload/${file.filename}`;
+    const secureUrl = `https://backend-bonappetit.up.railway.app/api/v1/files/upload/${file.filename}`;
 
 
     return { secureUrl };

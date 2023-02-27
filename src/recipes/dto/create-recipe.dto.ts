@@ -3,7 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { ObjectId } from 'mongoose';
 import { User } from '../../users/schemas/user.schema';
 
-export class CreateCommentDto {
+export class CreateRecipeDto {
   @ApiProperty({ example: 'Me encantó' })
   readonly title: string;
 

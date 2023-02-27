@@ -36,7 +36,7 @@ export class Recipe {
   is_private: boolean;
   
   @Prop()
-  tags: Array<string>;
+  difficulty: string;
 
   @Prop()
   score: number;

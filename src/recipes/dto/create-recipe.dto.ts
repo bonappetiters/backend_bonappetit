@@ -25,7 +25,7 @@ export class CreateRecipeDto {
   readonly is_private: boolean;  
 
   @ApiProperty({ example: 'easy' })
-  readonly tags: string;    
+  readonly difficulty: string;    
 
   @ApiProperty({ example: '[spansih,mediterranean]' })
   readonly keywords: Array<string>;

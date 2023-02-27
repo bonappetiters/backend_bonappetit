@@ -7,33 +7,17 @@ export class CreateCommentDto {
   @ApiProperty({ example: 'Me encantó' })
   readonly title: string;
 
-  @ApiProperty({ example: 'Una gran receta para dias de frio' })
-  readonly description: string;
+  @ApiProperty({
+    example: 3,
+  })
+  readonly stars: number;
 
-  @ApiProperty({ example: '63f55008c7370e94bcf93d3b' })
-  readonly author: ObjectId;
+  @ApiProperty({
+    example:
+      'El resultado final es maravilloso, he podido disfrutar esta receta acompañada de vino y la mezcla de sabores es increible.',
+  })
+  readonly comment: string;
 
-  @ApiProperty({ example: '' })
-  ingredients: Array<{ 
-    ingredient: ObjectId, 
-    qty: number }>;
-
-  @ApiProperty({ example: 120 })
-  readonly time: number;
-
-  @ApiProperty({ example: 'false' })
-  readonly is_private: boolean;  
-
-  @ApiProperty({ example: 'easy' })
-  readonly tags: string;    
-
-  @ApiProperty({ example: '[spansih,mediterranean]' })
-  readonly keywords: Array<string>;
-
-  @ApiProperty({ example: 'breakfast' })
-  readonly mealType: string;  
-
-  @ApiProperty({ example: 'http://domain.com/image.png' })
-  readonly image: string;   
-
+  @ApiProperty({ example: '63d7873a3eb90db3ba4b52e1' })
+  readonly user: ObjectId;
 }

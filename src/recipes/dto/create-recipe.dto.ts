@@ -1,52 +1,23 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger';
-import mongoose, { ObjectId } from 'mongoose';
+import { ObjectId } from 'mongoose';
+import { User } from '../../users/schemas/user.schema';
 
-export class CreateRecipeDto {
-  @ApiProperty({
-    example: 'tostada',
-  })
-  title: string;
-
-  @ApiProperty({
-    example: 'rodaja de pan tostada',
-  })
-  description: string;
+export class CreateCommentDto {
+  @ApiProperty({ example: 'Me encantó' })
+  readonly title: string;
 
   @ApiProperty({
-    example: '63d9049bee15be130124a938',
+    example: 3,
   })
-  author: ObjectId;
+  readonly stars: number;
 
   @ApiProperty({
-    example: [
-      {ingredient:"63d0e7a3d465ce8c3453c972",qty:300}
-    ]
+    example:
+      'El resultado final es maravilloso, he podido disfrutar esta receta acompañada de vino y la mezcla de sabores es increible.',
   })
-  ingredients: Array<{ingredient:mongoose.Types.ObjectId,qty:number}>;
+  readonly comment: string;
 
-  @ApiProperty({
-    example: 2,
-  })
-  time: number;
-
-  @ApiProperty({
-    example: false,
-  })
-  is_private: boolean;
-
-  @ApiProperty({
-    example: ['vegana', 'fácil', 'desayuno'],
-  })
-  tags: Array<string>;
-
-    @ApiProperty({
-    example: "Breakfast",
-  })
-  mealType: string;
-
-  @ApiProperty({
-    example: "https://domain.com/api/v1/1-image.png"
-  })
-  image: string;
+  @ApiProperty({ example: '63d7873a3eb90db3ba4b52e1' })
+  readonly user: ObjectId;
 }

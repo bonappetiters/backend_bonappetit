@@ -36,4 +36,7 @@ export class CreateRecipeDto {
   @ApiProperty({ example: 'http://domain.com/image.png' })
   readonly image: string;   
 
+  @ApiProperty({ example: 0 })
+  readonly views: number;   
+
 }

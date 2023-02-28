@@ -21,21 +21,21 @@ export class RecipesService {
   async findAll() {
     // return this.recipeModel.find({})
     // .populate("ingredients comments.user", "name")
-    return this.recipeModel.find({}, {"_id": 0, "__v": 0, "is_private": 0})
+    return this.recipeModel.find({}, { "__v": 0})
     .populate("ingredients", "name")
     .exec();
   }
 
   async findOne(id: string) {
     return this.recipeModel
-    .findOne({ _id: id}, { "__v": 0, "is_private": 0})
+    .findOne({ _id: id}, { "__v": 0 })
     .populate("ingredients author comments.user", "-_id -__v -shopping_list -email -password")
     .exec()
   }
 
     async findOneByTitle(value: string) {
     return this.recipeModel
-    .findOne({ title: value}, { "__v": 0, "is_private": 0})
+    .findOne({ title: value}, { "__v": 0})
     .populate("ingredients author comments.user", "-_id -__v -shopping_list -email -password")
     .exec()
   }

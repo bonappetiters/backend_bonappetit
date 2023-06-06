@@ -21,7 +21,7 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot("mongodb+srv://bonappetit:ODx3b6esFKfK6BIq@cluster0.5wrixjh.mongodb.net/?retryWrites=true&w=majority"),
+    MongooseModule.forRoot(process.env.MONGO_DB_URL),
     RecipesModule,
     UsersModule,
     AuthModule,

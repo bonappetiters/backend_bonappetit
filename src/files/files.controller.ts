@@ -32,7 +32,7 @@ export class FilesController {
     }
 
     // const secureUrl = `${process.env.HOST_API}/files/upload/${file.filename}`;
-    const secureUrl = `https://backend-bonappetit.up.railway.app/api/v1/files/upload/${file.filename}`;
+    const secureUrl = `https://api-back-recette.onrender.com/api/v1/files/upload/${file.filename}`;
 
 
     return { secureUrl };
